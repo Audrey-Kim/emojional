@@ -19,6 +19,15 @@ class ViewController: UIViewController {
         "🍒" : "cherries"
     ]
     
+    var customMessages = [
+        "green apple" : ["sauteed apples", "fried green apples", "green apple crisp"],
+        "red apple" : ["cinnamon apple crumble", "apple pie", "mini spiced apple tarts"],
+        "grapes" : ["roasted grape crostini", "orange-drizzled grape tartlets", "cheese-grape appetizers"],
+        "orange" : ["orange cheesecake breakfast rolls", "orange spritz cookies", "orange ricotta pancakes"],
+        "lemon" : ["lemon-date bars", "lemon gateau", "lemon meringue pie"],
+        "cherries" : ["cherry and chocolate ice cream pie", "spiced cherry chutney", "cherry slurpee"]
+    ]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,8 +39,13 @@ class ViewController: UIViewController {
         //stores info about which button user tapped
         let selectedFruit = sender.titleLabel?.text
         
+        //random number system
+        let number = Int.random(in: 0 ..< 3)
+        
+        let fruitMessage = customMessages[fruit[selectedFruit!]!]?[number]
+        
         //makes the alert
-        let alertController = UIAlertController(title: "Sauteed Apples", message: fruit[selectedFruit!], preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: "Sauteed Apples", message: fruitMessage, preferredStyle: UIAlertController.Style.alert)
         
         //need to give alert an action so that user can tap button to make alert go away
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
