@@ -19,13 +19,14 @@ class ViewController: UIViewController {
         "🍒" : "cherries"
     ]
     
-    var customMessages = [
-        "green apple" : ["sauteed apples", "fried green apples", "green apple crisp"],
-        "red apple" : ["cinnamon apple crumble", "apple pie", "mini spiced apple tarts"],
-        "grapes" : ["roasted grape crostini", "orange-drizzled grape tartlets", "cheese-grape appetizers"],
-        "orange" : ["orange cheesecake breakfast rolls", "orange spritz cookies", "orange ricotta pancakes"],
-        "lemon" : ["lemon-date bars", "lemon gateau", "lemon meringue pie"],
-        "cherries" : ["cherry and chocolate ice cream pie", "spiced cherry chutney", "cherry slurpee"]
+    //dictionary of titles
+    var customTitles = [
+        "green apple" : ["Sauteed Apples", "Fried Green Apples", "Green Apple Crisp"],
+        "red apple" : ["Cinnamon Apple Crumble", "Apple Pie", "Mini Spiced Apple Tarts"],
+        "grapes" : ["Roasted Grape Crostini", "Orange-Drizzled Grape Tartlets", "Cheese-Grape Appetizers"],
+        "orange" : ["Orange Cheesecake Breakfast Rolls", "Orange Spritz Cookies", "Orange Ricotta Pancakes"],
+        "lemon" : ["Lemon-Date Bars", "Lemon Gateau", "Lemon Meringue Pie"],
+        "cherries" : ["Cherry and Chocolate Ice Cream Pie", "Spiced Cherry Chutney", "Cherry Slurpee"]
     ]
     
     override func viewDidLoad() {
@@ -42,10 +43,12 @@ class ViewController: UIViewController {
         //random number system
         let number = Int.random(in: 0 ..< 3)
         
-        let fruitMessage = customMessages[fruit[selectedFruit!]!]?[number]
+        let fruitTitle = customTitles[fruit[selectedFruit!]!]?[number]
+        
+        
         
         //makes the alert
-        let alertController = UIAlertController(title: "Sauteed Apples", message: fruitMessage, preferredStyle: UIAlertController.Style.alert)
+        let alertController = UIAlertController(title: fruitTitle, message: "Insert recipe here", preferredStyle: UIAlertController.Style.alert)
         
         //need to give alert an action so that user can tap button to make alert go away
         alertController.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: nil))
